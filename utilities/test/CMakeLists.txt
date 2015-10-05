@@ -3,6 +3,7 @@ include(ALPSEnableTests)
 set (test_src
     temporary_filename
     gtest_par_xml_output
+    type_traits
     )
 
 foreach(test ${test_src})
