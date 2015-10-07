@@ -20,6 +20,7 @@ set (test_src
     single_accumulator
     autocorrelation
     print
+    scalar_result_type
     )
 
 #add tests for MPI
