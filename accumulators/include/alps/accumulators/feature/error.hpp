@@ -74,7 +74,7 @@ namespace alps {
 
                 public:
                     typedef typename alps::accumulators::error_type<B>::type error_type;
-                    typedef typename alps::hdf5::scalar_type<error_type>::type error_scalar_type;
+                    typedef typename alps::numeric::scalar<error_type>::type error_scalar_type;
                     typedef Result<T, error_tag, typename B::result_type> result_type;
 
                     Accumulator(): B(), m_sum2(T()) {}
@@ -94,7 +94,7 @@ namespace alps {
 
                         // TODO: make library for scalar type
                         error_scalar_type cnt = B::count();
-                        return sqrt((m_sum2 / cnt - B::mean() * B::mean()) / (cnt - 1));
+                        return sqrt((m_sum2 / cnt - B::mean() * B::mean()) / (cnt - static_cast<error_scalar_type>(1)));
                     }
 
                     using B::operator();
@@ -127,7 +127,7 @@ namespace alps {
                         ar["mean/error"] >> error;
                         // TODO: make library for scalar type
                         error_scalar_type cnt = B::count();
-                        m_sum2 = (error * error * (cnt - 1) + B::mean() * B::mean()) * cnt;
+                        m_sum2 = (error * error * (cnt - static_cast<error_scalar_type>(1)) + B::mean() * B::mean()) * cnt;
                     }
 
                     static std::size_t rank() { return B::rank() + 1; }
