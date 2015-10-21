@@ -201,6 +201,7 @@ namespace alps {
                     }
             ALPS_ACCUMULATOR_PROPERTY_PROXY(mean, mean_type)
             ALPS_ACCUMULATOR_PROPERTY_PROXY(error, error_type)
+            ALPS_ACCUMULATOR_PROPERTY_PROXY(autocorrelation, autocorrelation_type)
             #undef ALPS_ACCUMULATOR_PROPERTY_PROXY
 
             // save
